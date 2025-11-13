@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+button {
+    background: white;
+    font-size: 40px;
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    transition: all ease 0.5s; 
+    transform: rotate(0deg); 
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+button:active {
+    transform: scale(0.95) rotate(0deg) !important;
+    background: #CC4422; 
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), inset 0 2px 8px rgba(0, 0, 0, 0.6);
+    animation: none;
+}
+
+button:hover {
+    background: #FF5733;
+    color: white;
+    transform: scale(1.05);
+
+    animation: shake 1s; 
+    animation-fill-mode: backwards; 
+    animation-timing-function: ease-in-out; 
+    box-shadow: 
+        0 0 5px #FF5733,     
+        0 0 25px #FF5733,   
+        0 0 50px #FF5733;    
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: rotate(0deg) scale(1.05); 
+    }
+    10% {
+        transform: rotate(15deg) scale(1.03); 
+    }
+    30% {
+        transform: rotate(-15deg) scale(1.07);
+    }
+    50% {
+        transform: rotate(10deg) scale(1.04); 
+    }
+    70% {
+        transform: rotate(-10deg) scale(1.06); 
+    }
+    90% {
+        transform: rotate(5deg) scale(1.04); 
+    }
+}
