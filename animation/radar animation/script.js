@@ -2,23 +2,18 @@ const dotContainer = document.getElementById('dot-container');
 const numDots = 3; 
 const dots = [];
 
-// SABİTLER
-const FADE_DURATION = 1000; // CSS transition süresi (1 saniye)
-const SPIN_DURATION = 3000; // CSS spin animasyonu süresi (3 saniye)
-const VISIBLE_ANGLE_DEG = 360 * (30 / 100); // 108 derece
+const FADE_DURATION = 1000; 
+const SPIN_DURATION = 3000; 
+const VISIBLE_ANGLE_DEG = 360 * (30 / 100); 
 
-// **GÜNCELLENMİŞ SES NESNELERİ**
 const radarSound = new Audio('radar.mp3'); 
 radarSound.load(); 
 
-// **YENİ EKLEME: LOOP SESİ**
 const spinLoopSound = new Audio('radar-spin.mp3');
-spinLoopSound.loop = true; // Sesin sürekli tekrarlamasını sağlar
+spinLoopSound.loop = true; 
 spinLoopSound.load(); 
 
 const startTime = Date.now();
-
-// --- 1. Noktaları Oluşturma ve Konumlandırma Fonksiyonları ---
 
 function setRandomPolarPosition(dotElement) {
     const radius = Math.random() * 50; 
@@ -56,7 +51,6 @@ function createDot() {
     });
 }
 
-// --- 2. Animasyon Açısı Kontrolü ---
 function checkDotVisibility(dot) {
     const elapsedTime = (Date.now() - startTime) % SPIN_DURATION;
     
@@ -83,8 +77,6 @@ function checkDotVisibility(dot) {
     return isInside;
 }
 
-
-// --- 3. Ana Animasyon Döngüsü ---
 let isFlashing = false;
 
 function animateDots() {
@@ -96,17 +88,14 @@ function animateDots() {
             isFlashing = true; 
             dot.isVisible = true;
 
-            // FADE-IN
             dot.element.classList.add('visible');
             
-            // TEKİL VURUŞ SESİ
             radarSound.currentTime = 0; 
             radarSound.play().catch(e => console.error("Tekil radar sesi çalınamadı:", e)); 
 
             const visibleDuration = 1000; 
 
             setTimeout(() => {
-                // FADE-OUT BAŞLANGICI
                 dot.element.classList.remove('visible'); 
 
                 setTimeout(() => {
@@ -125,15 +114,11 @@ function animateDots() {
     requestAnimationFrame(animateDots);
 }
 
-// --- 4. BAŞLANGIÇ ---
-// Tüm noktaları oluştur
 for (let i = 0; i < numDots; i++) {
     createDot();
 }
 
-// Sürekli dönen sesi başlatacak yardımcı fonksiyon
 function startLoopSound() {
-    // Sadece henüz çalmıyorsa başlat
     if (spinLoopSound.paused) { 
         spinLoopSound.play().catch(e => {
             console.warn("Arka plan sesi çalınamadı, kullanıcı etkileşimi bekleniyor:", e);
@@ -141,11 +126,8 @@ function startLoopSound() {
     }
 }
 
-// Animasyon döngüsünü başlat
 animateDots();
 
-// Sesin çalması için tarayıcı kısıtlamalarını aşmaya çalışıyoruz:
-// Sayfa yüklendiğinde ve kullanıcı ilk etkileşimi yaptığında sesi başlat
 document.addEventListener('click', startLoopSound, { once: true });
 document.addEventListener('keydown', startLoopSound, { once: true });
-startLoopSound(); // Mümkünse hemen başlatmayı dene
+startLoopSound(); 
