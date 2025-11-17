@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif, monospace;
+}
+
+body {
+    background-color: #171a27;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: rgb(11, 58, 11);
+    border: 6px solid black;
+    width: 550px;
+    height: 555px;
+    border-radius: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden; 
+}
+
+
+.dot {
+    position: absolute;
+    width: 20px; 
+    height: 20px; 
+    background-color: red;
+    border-radius: 50%;
+    opacity: 0; 
+    transition: opacity 1s ease-in-out, box-shadow 1s ease-in-out, transform 1s ease-in-out;
+
+    box-shadow: 0 0 0 rgba(255, 0, 0, 0); 
+    transform: scale(0.8);
+    z-index: 2;
+}
+
+.dot.visible {
+    opacity: 1; 
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.8), 
+                0 0 30px rgba(255, 0, 0, 0.4);
+    transform: scale(1.0);
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.container::after, .container::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: conic-gradient(from var(--angle), transparent 70%, rgb(0, 173, 0));
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: 1;
+    padding: 0px;
+    border-radius: 50%;
+    animation: 3s spin linear infinite;
+}
+
+.container::before {
+    filter: blur(3rem);
+    opacity: 0.5;
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+
+    to {
+        --angle: 360deg;
+    }
+}
+
