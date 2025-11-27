@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #1a1a1a;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 120px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 25px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.btn1 {
+    background: #38d8d8;
+    box-shadow: 0px 5px 10px #000;
+    transition: 0.5s;
+    border: none;
+}
+
+.btn1:hover {
+
+    background: #30bbbb;
+    transform: scale(1.10);
+}
+
+.btn2 {
+    border: 2px solid red;
+    background: transparent;
+    transition: 0.3s;
+}
+
+.btn2:hover {
+    transform: scale(1.05);
+    background: red;
+}
+
+.btn3 {
+    border: none;
+    background: rgba(255, 0, 0, 0.7); 
+    filter: blur(1px); 
+    backdrop-filter: blur(5px); 
+    transition: 0.3s;
+}
+
+.btn3:hover {
+    filter: blur(0px);
+    backdrop-filter: blur(0px); 
+    transform: scale(1.03);
+}
+
+.btn4 {
+    background: linear-gradient(30deg, #f56d2e 13%, #f1d140 21%, #dee94b 33%, #78d32e 45%,
+      #4bff69 56%, #5df5a1 67%, #60bdfa 81%, #7869ff 90%, #f374ff 100%);
+    background-size: 200% 200%; 
+    background-position: 0% 0%; 
+    transition: transform 0.3s ease-out, 
+                background-position 0.5s ease-in-out;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn4:hover {
+    transform: scale(1.07);
+    background-position: 100% 100%;
+}
+
+.btn5 {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    background: transparent; 
+    border: 2px solid #0ff; 
+    border-radius: 8px; 
+    cursor: pointer;
+    text-decoration: none; 
+    box-shadow: 
+        0 0 5px #0ff, 
+        0 0 15px #0ff, 
+        0 0 30px #0ff; 
+    text-shadow: 0 0 5px #0ff; 
+    transition: 
+        transform 0.3s ease-in-out, 
+        box-shadow 0.4s ease-in-out,
+        text-shadow 0.4s ease-in-out, 
+        border-color 0.4s ease-in-out; 
+}
+
+.btn5:hover {
+    transform: scale(1.08); 
+    box-shadow: 
+        0 0 10px #0ff, 
+        0 0 30px #0ff,
+        0 0 60px #0ff, 
+        0 0 100px #0ff; 
+    text-shadow: 0 0 10px #0ff;
+    border-color: #0c8; 
+}
